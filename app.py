@@ -9,18 +9,18 @@ def index():
         search_query = request.form.get('search_query')
         music_result ,url = search(search_query)
         print(music_result , url)
-        return render_template('index.html', music_result=music_result , url = url)
+        download_url = f'/download?url={url}'
+        return render_template('index.html', music_result=music_result , youtube_url = url , download_url = download_url)
 
     return render_template('index.html')
 
 @app.route('/download', methods=['GET'])
 def download():
-    track_id = request.args.get('track_id')
+    url = request.args.get('url')
 
     # Replace this with your logic to download the audio file using the track_id
-    # For example, you can use youtube-dl to download the audio
-    # Make sure to provide the correct path to the downloaded file
-    file_path = 'path/to/downloaded/file.mp3'
+    # For example, you can use the `download()` function from the `main` module
+    file_path = download(url)
 
     return send_file(file_path, as_attachment=True)
 
