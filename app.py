@@ -24,7 +24,7 @@ def download():
     if file_path:
         return send_file(file_path, as_attachment=True)
     else:
-        return response
+        return render_template('response.html', message=response)
 
 # Other routes and functions
 
