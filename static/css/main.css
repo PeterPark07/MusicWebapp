@@ -51,15 +51,6 @@ h1 {
     font-family: sans-serif;
 }
 
-.youtube-link {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.track h3 {
-    margin: 0;
-}
-
 .download-btn {
     display: inline-block;
     padding: 6px 12px;
@@ -68,6 +59,19 @@ h1 {
     background-color: #4CAF50;
     color: white;
     border-radius: 3px;
+    margin-right: 10px;
+}
+
+.youtube-link {
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+    text-decoration: underline;
+    color: blue;
+}
+
+.track h3 {
+    margin: 0;
 }
 
 .download-btn:hover {
