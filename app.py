@@ -12,6 +12,17 @@ def index():
 
     return render_template('index.html')
 
+@app.route('/download', methods=['GET'])
+def download():
+    # Retrieve the track ID from the query parameters
+    track_id = request.args.get('track_id')
+
+    # Implement the download logic based on the track ID
+    # Replace the code below with your actual download logic
+    # For example, you can use the `youtube_dl` library to download the audio file
+    # and return it as a response to the user
+    return f"Download endpoint for track ID: {track_id}"
+
 # Other routes and functions
 
 if __name__ == '__main__':
