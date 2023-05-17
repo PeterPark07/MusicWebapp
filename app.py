@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, send_file
 from main import search, download_audio
 
 app = Flask(__name__)
+app.config['TIMEOUT'] = 600  # Set the timeout to 10 minutes (600 seconds)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
