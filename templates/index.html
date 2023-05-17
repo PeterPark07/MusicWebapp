@@ -18,6 +18,9 @@
         {% if music_result %}
             <div class="track single">
                 <h3>{{ music_result }}</h3>
+                {% if url %}
+                    <p class="youtube-link">{{ url }}</p>
+                {% endif %}
             </div>
         {% endif %}
     </div>
