@@ -24,7 +24,7 @@ def download(url):
         filepath = info['requested_downloads'][0]['filepath']
         return None , filepath
   except:
-    return render_template('response.html', message=response)
+    return 'Could not download file' , None
   
 def delete(path):
   os.remove(path)
