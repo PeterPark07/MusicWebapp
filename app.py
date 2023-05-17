@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         search_query = request.form.get('search_query')
-        music_result = search(search_query)
+        music_result ,url = search(search_query)
         return render_template('index.html', music_result=music_result)
 
     return render_template('index.html')
