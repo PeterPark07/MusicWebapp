@@ -22,11 +22,6 @@ def download(url):
     with youtube_dl.YoutubeDL(ytdl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
         filepath = info['requested_downloads'][0]['filepath']
-        file_size = os.path.getsize(filepath)
-        if file_size > 50 * 1024 * 1024:
-            response = "File larger than 50 MB."
-            os.remove(filepath)
-            return response , None
         return None , filepath
   except:
     return 'Could not download file' , None
