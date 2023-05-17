@@ -45,9 +45,15 @@ h1 {
 }
 
 .track.single {
-    background-color: #ffeeba;
+    background-color: white;
     padding: 20px;
     margin: 20px;
+    font-family: sans-serif;
+}
+
+.youtube-link {
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 .track h3 {
