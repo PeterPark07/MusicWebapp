@@ -13,13 +13,16 @@
             <button type="submit">Search</button>
         </form>
     </div>
-    
+
     <div class="music-results">
         {% if music_result %}
             <div class="track single">
                 <h3>{{ music_result }}</h3>
-                {% if url %}
-                    <p class="youtube-link">{{ url }}</p>
+                {% if download_url %}
+                    <a href="{{ download_url }}" class="download-btn">Download</a>
+                {% endif %}
+                {% if youtube_url %}
+                    <a href="{{ youtube_url }}" target="_blank" class="youtube-link">Watch on YouTube</a>
                 {% endif %}
             </div>
         {% endif %}
