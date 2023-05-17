@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from main import search, download
 
 app = Flask(__name__)
@@ -7,10 +7,9 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         search_query = request.form.get('search_query')
-        music_result ,url = search(search_query)
-        print(music_result , url)
-        download_url = f'/download?url={url}'
-        return render_template('index.html', music_result=music_result , youtube_url = url , download_url = download_url)
+        music_result, youtube_url = search(search_query)
+        download_url = f'/download?url={youtube_url}'
+        return render_template('index.html', music_result=music_result, youtube_url=youtube_url, download_url=download_url)
 
     return render_template('index.html')
 
@@ -18,11 +17,14 @@ def index():
 def download():
     url = request.args.get('url')
 
-    # Replace this with your logic to download the audio file using the track_id
+    # Replace this with your logic to download the audio file using the URL
     # For example, you can use the `download()` function from the `main` module
-    file_path = download(url)
+    response, file_path = download(url)
 
-    return send_file(file_path, as_attachment=True)
+    if file_path:
+        return send_file(file_path, as_attachment=True)
+    else:
+        return response
 
 # Other routes and functions
 
