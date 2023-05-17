@@ -18,7 +18,6 @@
         {% if music_result %}
             <div class="track single">
                 <h3>{{ music_result.name }}</h3>
-                <a href="{{ url_for('download', track_id=music_result.id) }}" class="download-btn">Download</a>
             </div>
         {% endif %}
     </div>
