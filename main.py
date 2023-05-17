@@ -17,7 +17,7 @@ def search(query):
   url = f"https://www.youtube.com/watch?v={selected_video['id']}"
   return f"{selected_video['title']}..." , url
 
-def download(url):
+def download_audio(url):
   try:
     with youtube_dl.YoutubeDL(ytdl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
