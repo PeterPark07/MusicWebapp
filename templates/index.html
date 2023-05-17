@@ -6,23 +6,23 @@
 </head>
 <body>
     <h1>Music Downloader</h1>
-
+    
     <div class="search-form">
         <form method="POST" action="/">
             <input type="text" name="search_query" placeholder="Enter your search query">
             <button type="submit">Search</button>
         </form>
     </div>
-
+    
     <div class="music-results">
         {% if music_result %}
-            <div class="track">
+            <div class="track single">
                 <h3>{{ music_result.name }}</h3>
                 <a href="{{ url_for('download', track_id=music_result.id) }}" class="download-btn">Download</a>
             </div>
         {% endif %}
     </div>
-
+    
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
