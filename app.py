@@ -9,7 +9,7 @@ def index():
         search_query = request.form.get('search_query')
         music_result ,url = search(search_query)
         print(music_result , url)
-        return render_template('index.html', music_result=music_result)
+        return render_template('index.html', music_result=music_result , url = url)
 
     return render_template('index.html')
 
