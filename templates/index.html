@@ -14,13 +14,13 @@
         </form>
     </div>
     
-<div class="music-results">
+    <div class="music-results">
         {% if music_result %}
-            {% for track in music_result %}
+            {% for url, title in zip(music_result, music_titles) %}
                 <div class="track">
-                    <h3>{{ track }}</h3>
-                    <a class="download-btn" href="{{ url_for('download', url=track) }}">Download</a>
-                    <a class="youtube-link" href="{{ track }}" target="_blank">Watch on YouTube</a>
+                    <h3>{{ title }}</h3>
+                    <a class="download-btn" href="{{ url_for('download', url=url) }}">Download</a>
+                    <a class="youtube-link" href="{{ url }}" target="_blank">Watch on YouTube</a>
                 </div>
             {% endfor %}
         {% elif request.method == 'POST' %}
@@ -29,4 +29,3 @@
     </div>
 </body>
 </html>
-    
