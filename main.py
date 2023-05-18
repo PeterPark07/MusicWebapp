@@ -1,20 +1,23 @@
 import yt_dlp as youtube_dl
 from youtubesearchpython import VideosSearch
 
-def search(query , n):
-    search = VideosSearch(query, limit=n)  # Search with a limit of 5 results
+def search(query, n):
+    search = VideosSearch(query, limit=n)  # Search with a limit of n results
     results = search.result().get('result')
     if not results:
-        return None 
+        return None, None
 
     music_results = []
+    music_titles = []
     for video in results:
         url = f"https://www.youtube.com/watch?v={video['id']}"
+        title = video['title']
         music_results.append(url)
-    print('1111111111111111111111111' , music_results)
+        music_titles.append(title)
+        print(music_results , '\n' , music_titles )
 
-    return music_results 
-  
+    return music_results, music_titles
+
 def download_audio(url):
   try:
     with youtube_dl.YoutubeDL() as ydl:
