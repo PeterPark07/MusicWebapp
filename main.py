@@ -1,11 +1,5 @@
 import yt_dlp as youtube_dl
 from youtubesearchpython import VideosSearch
-import os
-
-ytdl_opts = {'format': 'bestaudio/best',
-             'postprocessors': [{'key': 'FFmpegExtractAudio',
-                                 'preferredcodec': 'best',
-                                 'preferredquality': 'best'}]}
 
 def search(query):
   search = VideosSearch(query, limit=1)
@@ -27,6 +21,3 @@ def download_audio(url):
         return None , download_url
   except:
     return 'Could not download file' , None
-  
-def delete(path):
-  os.remove(path)
