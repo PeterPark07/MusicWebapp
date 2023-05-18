@@ -24,10 +24,14 @@
                 </div>
             {% endfor %}
         {% else %}
-            <p>No results found for that query.</p>
+            {% if request.method == 'POST' %}
+                <p>No results found for that query.</p>
+            {% endif %}
         {% endif %}
     </div>
     
+</body>
+</html>
 </body>
 </html>
 </body>
