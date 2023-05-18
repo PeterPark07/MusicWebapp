@@ -23,6 +23,8 @@
                     <a href="{{ result[1] }}" target="_blank" class="youtube-link">Watch on YouTube</a>
                 </div>
             {% endfor %}
+        {% else %}
+            <p>No results found for that query.</p>
         {% endif %}
     </div>
     
