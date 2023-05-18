@@ -16,11 +16,11 @@
 
     <div class="music-results">
         {% if music_result %}
-            {% for result in music_result %}
+            {% for title, url in music_result %}
                 <div class="track single">
-                    <h3>{{ result[0] }}</h3>
-                    <a href="/download?url={{ result[1] }}" class="download-btn">Download</a>
-                    <a href="{{ result[1] }}" target="_blank" class="youtube-link">Watch on YouTube</a>
+                    <h3>{{ title }}</h3>
+                    <a href="/download?url={{ url }}" class="download-btn">Download</a>
+                    <a href="{{ url }}" target="_blank" class="youtube-link">Watch on YouTube</a>
                 </div>
             {% endfor %}
         {% else %}
@@ -29,10 +29,7 @@
             {% endif %}
         {% endif %}
     </div>
+
     
-</body>
-</html>
-</body>
-</html>
 </body>
 </html>
