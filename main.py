@@ -7,16 +7,15 @@ def search(query, n):
     if not results:
         return None, None
 
-    music_results = []
-    music_titles = []
+    urls = []
+    titles = []
     for video in results:
         url = f"https://www.youtube.com/watch?v={video['id']}"
         title = video['title']
-        music_results.append(url)
-        music_titles.append(title)
-        print(music_results , '\n' , music_titles )
+        urls.append(url)
+        titles.append(title)
 
-    return music_results, music_titles
+    return urls, titles
 
 def download_audio(url):
   try:
