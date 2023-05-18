@@ -23,7 +23,8 @@ def download_audio(url):
         info = ydl.extract_info(url, download=False)
         formats = info['formats']
         audio_formats = [f for f in formats if f.get('vcodec') == 'none']
-        download_url = audio_formats[-2].get('url')
+        audio_formats = audio_formats[-2]
+        download_url = audio_formats.get('url')
         return None , url
   except:
     return 'Could not download file' , None
