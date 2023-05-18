@@ -16,11 +16,11 @@
     
     <div class="music-results">
         {% if music_result %}
-            {% for url, title in zip(music_result, music_titles) %}
+            {% for i in range(music_result|length) %}
                 <div class="track">
-                    <h3>{{ title }}</h3>
-                    <a class="download-btn" href="{{ url_for('download', url=url) }}">Download</a>
-                    <a class="youtube-link" href="{{ url }}" target="_blank">Watch on YouTube</a>
+                    <h3>{{ music_titles[i] }}</h3>
+                    <a class="download-btn" href="{{ url_for('download', url=music_result[i]) }}">Download</a>
+                    <a class="youtube-link" href="{{ music_result[i] }}" target="_blank">Watch on YouTube</a>
                 </div>
             {% endfor %}
         {% elif request.method == 'POST' %}
