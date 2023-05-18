@@ -12,7 +12,7 @@ def search(query , n):
         url = f"https://www.youtube.com/watch?v={video['id']}"
         music_results.append((video['title'], url))
 
-    return music_results
+    return music_results , None
   
 def download_audio(url):
   try:
