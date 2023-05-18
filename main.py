@@ -18,6 +18,9 @@ def download_audio(url):
         formats = info['formats']
         audio_formats = [f for f in formats if f.get('vcodec') == 'none']
         download_url = audio_formats[-2].get('url')
-        return None , download_url
+        extension = audio_formats[-2].get('ext')
+        video_title = info.get('title')
+        video_title_with_extension = f"{video_title}.{extension}"
+        return None , download_url , video_title_with_extension 
   except:
-    return 'Could not download file' , None
+    return 'Could not download file', None, None
