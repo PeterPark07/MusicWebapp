@@ -18,9 +18,11 @@
         {% if music_result is not none %}
             {% for result in music_result %}
                 <div class="track single">
-                    <h3>{{ result[0][0] }}</h3>
-                    <a href="/download?url={{ result[1] }}" class="download-btn">Download</a>
-                    <a href="{{ result[1] }}" target="_blank" class="youtube-link">Watch on YouTube</a>
+                    <h3>{{ result[0] }}</h3>
+                    <div class="links">
+                        <a href="/download?url={{ result[1] }}" class="download-btn">Download</a>
+                        <a href="{{ result[1] }}" target="_blank" class="youtube-link">Watch on YouTube</a>
+                    </div>
                 </div>
             {% endfor %}
         {% elif request.method == 'POST' %}
@@ -28,7 +30,5 @@
         {% endif %}
     </div>
 
-
-    
 </body>
 </html>
