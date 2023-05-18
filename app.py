@@ -16,9 +16,6 @@ def index():
 @app.route('/download', methods=['GET'])
 def download():
     url = request.args.get('url')
-
-    # Replace this with your logic to download the audio file using the URL
-    # For example, you can use the `download()` function from the `main` module
     response, audio_url = download_audio(url)
 
     if audio_url:
@@ -26,8 +23,6 @@ def download():
         return redirect(audio_url)
     else:
         return render_template('response.html', message=response)
-
-# Other routes and functions
 
 if __name__ == '__main__':
     app.run()
