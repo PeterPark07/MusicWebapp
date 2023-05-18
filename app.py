@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, send_file
 from main import search, download_audio
 
 app = Flask(__name__)
@@ -16,11 +16,13 @@ def index():
 @app.route('/download', methods=['GET'])
 def download():
     url = request.args.get('url')
-    response, audio_url = download_audio(url)
+    response, audio_url , name = download_audio(url)
 
-    if audio_url:
-        print(audio_url)
-        return redirect(audio_url)
+    if audio_url and name:
+        filename = name  # Specify the desired filename here
+        return send_file(audio_url, as_attachment=True, attachment_filename=filename)
+    elif audio_url:
+        return send_file(audio_url, as_attachment=True)
     else:
         return render_template('response.html', message=response)
 
