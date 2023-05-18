@@ -5,15 +5,15 @@ def search(query , n):
     search = VideosSearch(query, limit=n)  # Search with a limit of 5 results
     results = search.result().get('result')
     if not results:
-        return None ,"No videos found for that query."
+        return None 
 
     music_results = []
     for video in results:
         url = f"https://www.youtube.com/watch?v={video['id']}"
-        music_results.append([video['title'], url])
+        music_results.append(url)
     print('1111111111111111111111111' , music_results)
 
-    return music_results , None
+    return music_results 
   
 def download_audio(url):
   try:
