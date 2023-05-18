@@ -5,7 +5,7 @@ def search(query , n):
     search = VideosSearch(query, limit=n)  # Search with a limit of 5 results
     results = search.result().get('result')
     if not results:
-        return "No videos found for that query.", None
+        return None ,"No videos found for that query."
 
     music_results = []
     for video in results:
