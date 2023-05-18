@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, redirect
 from main import search, download_audio
 
 app = Flask(__name__)
@@ -19,10 +19,10 @@ def download():
 
     # Replace this with your logic to download the audio file using the URL
     # For example, you can use the `download()` function from the `main` module
-    response, file_path = download_audio(url)
+    response, download_url = download_audio(url)
 
-    if file_path:
-        return send_file(file_path, as_attachment=True)
+    if download_url:
+        return redirect(download_url)
     else:
         return render_template('response.html', message=response)
 
