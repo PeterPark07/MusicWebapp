@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         search_query = request.form.get('search_query')
-        music_result, youtube_url = search(search_query)
+        music_result, youtube_url = search(search_query , 5)
         download_url = f'/download?url={youtube_url}'
         return render_template('index.html', music_result=music_result, youtube_url=youtube_url, download_url=download_url)
 
