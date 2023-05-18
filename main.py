@@ -19,10 +19,12 @@ def search(query):
 
 def download_audio(url):
   try:
-    with youtube_dl.YoutubeDL(ytdl_opts) as ydl:
-        info = ydl.extract_info(url, download=True)
-        filepath = info['requested_downloads'][0]['filepath']
-        return None , filepath
+    with youtube_dl.YoutubeDL() as ydl:
+        info = ydl.extract_info(url, download=False)
+        formats = info['formats']
+        audio_formats = [f for f in formats if f.get('vcodec') == 'none']
+        download_url = audio_formats[-2].get('url')
+        return None , url
   except:
     return 'Could not download file' , None
   
