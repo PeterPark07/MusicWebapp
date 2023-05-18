@@ -19,10 +19,11 @@ def download():
 
     # Replace this with your logic to download the audio file using the URL
     # For example, you can use the `download()` function from the `main` module
-    response, download_url = download_audio(url)
+    response, audio_url = download_audio(url)
 
-    if download_url:
-        return redirect(download_url)
+    if audio_url:
+        print(audio_url)
+        return redirect(audio_url)
     else:
         return render_template('response.html', message=response)
 
