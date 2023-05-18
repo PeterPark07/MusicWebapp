@@ -23,8 +23,8 @@
                     <a class="youtube-link" href="{{ track }}" target="_blank">Watch on YouTube</a>
                 </div>
             {% endfor %}
-        {% else %}
-            <h2>No music results found.</h2>
+        {% elif request.method == 'POST' %}
+            <p>No results found for that query.</p>
         {% endif %}
     </div>
 </body>
