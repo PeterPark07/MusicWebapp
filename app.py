@@ -20,7 +20,7 @@ def download():
 
     if audio_url and name:
         filename = name  # Specify the desired filename here
-        return send_file(audio_url, as_attachment=True, download_name=filename)
+        return send_file(audio_url, as_attachment=True)
     elif audio_url:
         return send_file(audio_url, as_attachment=True)
     else:
