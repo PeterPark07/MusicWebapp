@@ -15,15 +15,13 @@
     </div>
     <div class="music-results">
         {% if music_result %}
-            <div class="track single">
-                <h3>{{ music_result }}</h3>
-                {% if download_url %}
-                    <a href="{{ download_url }}" class="download-btn">Download</a>
-                {% endif %}
-                {% if youtube_url %}
-                    <a href="{{ youtube_url }}" target="_blank" class="youtube-link">Watch on YouTube</a>
-                {% endif %}
-            </div>
+            {% for track in music_result %}
+                <div class="track">
+                    <h3>{{ track[0] }}</h3>
+                    <a class="download-btn" href="{{ url_for('download', url=track[1]) }}">Download</a>
+                    <a class="youtube-link" href="{{ track[1] }}" target="_blank">Watch on YouTube</a>
+                </div>
+            {% endfor %}
         {% endif %}
     </div>
 
