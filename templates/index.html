@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Music Downloader</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Music Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-    <h1>Music Downloader</h1>
-    
+    <h1>Music Search</h1>
     <div class="search-form">
         <form method="POST" action="/">
-            <input type="text" name="search_query" placeholder="Enter your search query">
+            <input type="text" name="search_query" placeholder="Enter a song or artist">
             <button type="submit">Search</button>
         </form>
     </div>
-
     <div class="music-results">
-        {% if music_result is not none %}
-            {% for result in music_result %}
-                <div class="track single">
-                    <h3>{{ result[0] }}</h3>
-                    <div class="links">
-                        <a href="/download?url={{ result[1] }}" class="download-btn">Download</a>
-                        <a href="{{ result[1] }}" target="_blank" class="youtube-link">Watch on YouTube</a>
-                    </div>
+        {% if music_result %}
+            {% for track in music_result %}
+                <div class="track">
+                    <h3>{{ track[0] }}</h3>
+                    <a class="download-btn" href="{{ url_for('download', url=track[1]) }}">Download</a>
+                    <a class="youtube-link" href="{{ track[1] }}" target="_blank">Watch on YouTube</a>
                 </div>
             {% endfor %}
-        {% elif request.method == 'POST' %}
-            <p>No results found for that query.</p>
         {% endif %}
     </div>
-
 </body>
 </html>
