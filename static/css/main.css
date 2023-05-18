@@ -1,79 +1,80 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    text-align: center;
-    padding: 20px 0;
+  text-align: center;
+  padding: 20px 0;
 }
 
 .search-form {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .search-form input[type="text"] {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    width: 300px;
-    max-width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  width: 300px;
+  max-width: 100%;
 }
 
 .search-form button {
-    padding: 8px 16px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .music-results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
 }
 
 .track {
-    background-color: #f2f2f2;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .track.single {
-    background-color: white;
-    padding: 20px;
-    margin: 20px;
-    font-family: sans-serif;
+  background-color: white;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.download-btn,
+.youtube-link {
+  font-size: 14px;
+  text-decoration: none;
 }
 
 .download-btn {
-    display: inline-block;
-    padding: 6px 12px;
-    font-size: 14px;
-    text-decoration: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 3px;
-    margin-right: 10px;
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 3px;
+  margin-right: 10px;
 }
 
 .youtube-link {
-    font-size: 14px;
-    margin-top: 10px;
-    display: block;
-    text-decoration: underline;
-    color: blue;
+  display: block;
+  margin-top: 10px;
+  color: blue;
 }
 
 .track h3 {
-    margin: 0;
+  margin: 0;
 }
 
 .download-btn:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
