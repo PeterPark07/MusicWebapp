@@ -1,8 +1,8 @@
 import yt_dlp as youtube_dl
 from youtubesearchpython import VideosSearch
 
-def search(query):
-    search = VideosSearch(query, limit=5)  # Search with a limit of 5 results
+def search(query , n):
+    search = VideosSearch(query, limit=n)  # Search with a limit of 5 results
     results = search.result().get('result')
     if not results:
         return "No videos found for that query.", None
