@@ -17,9 +17,6 @@
 <div class="music-results">
         {% if music_result %}
             {% for track in music_result %}
-                <h2>Music track:</h2>
-                <pre>{{ track }}</pre>
-
                 <div class="track">
                     <h3>{{ track }}</h3>
                     <a class="download-btn" href="{{ url_for('download', url=track) }}">Download</a>
