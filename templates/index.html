@@ -16,17 +16,14 @@
     
 <div class="music-results">
         {% if music_result %}
-            <h2>Music Results:</h2>
-            <pre>{{ music_result }}</pre>
-
             {% for track in music_result %}
                 <h2>Music track:</h2>
                 <pre>{{ track }}</pre>
 
                 <div class="track">
-                    <h3>{{ track[0] }}</h3>
-                    <a class="download-btn" href="{{ url_for('download', url=track[0]) }}">Download</a>
-                    <a class="youtube-link" href="{{ track[0] }}" target="_blank">Watch on YouTube</a>
+                    <h3>{{ track }}</h3>
+                    <a class="download-btn" href="{{ url_for('download', url=track) }}">Download</a>
+                    <a class="youtube-link" href="{{ track }}" target="_blank">Watch on YouTube</a>
                 </div>
             {% endfor %}
         {% else %}
