@@ -1,15 +1,19 @@
 import yt_dlp as youtube_dl
 from youtubesearchpython import VideosSearch
 
-def search(query):
-  search = VideosSearch(query, limit=1)
-  results = search.result().get('result')
-  if not results:
-      return "No videos found for that query." , None
+def search(query , n):
+    search = VideosSearch(query, limit=n)  # Search with a limit of 5 results
+    results = search.result().get('result')
+    if not results:
+        return None ,"No videos found for that query."
 
-  selected_video = results[0]
-  url = f"https://www.youtube.com/watch?v={selected_video['id']}"
-  return f"{selected_video['title']}..." , url
+    music_results = []
+    for video in results:
+        url = f"https://www.youtube.com/watch?v={video['id']}"
+        music_results.append([video['title'], url])
+    print('1111111111111111111111111' , music_results)
+
+    return music_results , None
   
 def download_audio(url):
   try:
