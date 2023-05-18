@@ -13,17 +13,21 @@
             <button type="submit">Search</button>
         </form>
     </div>
-    <div class="music-results">
+    
+<div class="music-results">
         {% if music_result %}
+            <h2>Music Results:</h2>
+
             {% for track in music_result %}
+                <h2>Music track:</h2>
                 <div class="track">
                     <h3>{{ track[0] }}</h3>
-                    <a class="download-btn" href="{{ url_for('download', url=track[1]) }}">Download</a>
-                    <a class="youtube-link" href="{{ track[1] }}" target="_blank">Watch on YouTube</a>
+                    <a class="download-btn" href="{{ url_for('download', url=track[0]) }}">Download</a>
+                    <a class="youtube-link" href="{{ track[0] }}" target="_blank">Watch on YouTube</a>
                 </div>
             {% endfor %}
         {% endif %}
     </div>
-
 </body>
 </html>
+    
