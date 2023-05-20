@@ -15,20 +15,20 @@ def index():
 @app.route('/download', methods=['GET'])
 def download():
     url = request.args.get('url')
-    response, audio_url , thumbnail = download_audio(url)
+    response,  thumbnail = show_audio(url)
 
-    if audio_url:
-        return render_template('response.html', audio_url=audio_url, thumbnail=thumbnail)
+    if thumbnail:
+        return render_template('response.html', audio_url=url, thumbnail=thumbnail)
     else:
         return render_template('response.html', message=response)
    
 @app.route('/download_file', methods=['GET'])
 def download_file():
     url = request.args.get('url')
-    response, audio_url, thumbnail = download_audio(url)
+    response, filepath = download_audio(url)
 
-    if audio_url:
-        return send_file(audio_url, as_attachment=True)
+    if filepath:
+        return send_file(filepath, as_attachment=True)
     else:
         return render_template('response.html', message=response)
     
