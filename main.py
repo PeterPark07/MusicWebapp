@@ -30,7 +30,7 @@ def search(query, n):
 
 def download_audio(url):
   try:
-    with youtube_dl.YoutubeDL() as ydl:
+    with youtube_dl.YoutubeDL(ytdl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
         thumbnail = [i['url'] for i in info['thumbnails'] if i['url'].endswith('.jpg')][-1] 
         filepath = info['requested_downloads'][0]['filepath']
