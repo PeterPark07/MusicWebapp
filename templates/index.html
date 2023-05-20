@@ -19,6 +19,7 @@
             {% for i in range(urls|length) %}
                 <div class="track">
                     <h3>{{ titles[i] }}</h3>
+                    <p>{{ durations[i] }}</p>
                     <a class="download-btn" href="{{ url_for('download', url=urls[i]) }}">Download</a>
                     <a class="youtube-link" href="{{ urls[i] }}" target="_blank">Watch on YouTube</a>
                 </div>
