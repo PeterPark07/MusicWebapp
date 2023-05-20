@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_file
-from main import search, download_audio
+from main import search,show_audio, download_audio
 
 app = Flask(__name__)
 
