@@ -23,7 +23,7 @@ def download_audio(url):
     with youtube_dl.YoutubeDL() as ydl:
         info = ydl.extract_info(url, download=False)
         thumbnail = [i['url'] for i in info['thumbnails'] if i['url'].endswith('.jpg')][-1] 
-        download_url = [f.get('url') for f in info['formats'] if f.get('vcodec') == 'none'][-2]
+        download_url = [f.get('url') for f in info['formats'] if f.get('ext') == 'm4a'][-1]
         return None , download_url , thumbnail
   except:
     return 'Could not download file', None , None
