@@ -9,8 +9,8 @@
 
     <div class="search-form">
         <form method="POST" action="/">
-            <input type="text" name="search_query" placeholder="Enter your search query">
-            <button type="submit">Search</button>
+            <input class="search-input" type="text" name="search_query" placeholder="Enter your search query">
+            <button class="search-button" type="submit">Search</button>
         </form>
     </div>
     
@@ -19,7 +19,7 @@
             {% for i in range(urls|length) %}
                 <div class="track">
                     <h3>{{ titles[i] }}</h3>
-                    <p>{{ durations[i] }}</p>
+                    <p class="duration">{{ durations[i] }}</p>
                     <a class="download-btn" href="{{ url_for('download', url=urls[i]) }}">Download</a>
                     <a class="youtube-link" href="{{ urls[i] }}" target="_blank">Watch on YouTube</a>
                 </div>
