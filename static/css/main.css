@@ -46,7 +46,7 @@ h1 {
   background-color: #f2f2f2;
   padding: 10px;
   border-radius: 5px;
-  display: flex;
+  align-items: center;
   font-family: sans-serif;
 }
 .download-btn,
@@ -60,7 +60,6 @@ h1 {
   padding: 8px 16px;
   background-color: #2ecc71;
   color: #fff;
-  border: none;
   border-radius: 5px;
   margin-right: 10px;
   transition: background-color 0.3s ease;
