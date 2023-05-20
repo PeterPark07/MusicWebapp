@@ -4,6 +4,12 @@
     <title>Response</title>
 </head>
 <body>
-    <h1>{{ message }}</h1>
+    {% if audio_url %}
+        <h1>{{ message }}</h1>
+        <img src="{{ thumbnail }}" alt="Thumbnail">
+        <a href="{{ url_for('download_file', url=audio_url) }}"><button>Download Now</button></a>
+    {% else %}
+        <h1>{{ message }}</h1>
+    {% endif %}
 </body>
 </html>
