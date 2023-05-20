@@ -9,24 +9,21 @@ def search(query, n):
 
     urls = []
     titles = []
+    durations =[]
     for video in results:
-        url = f"https://www.youtube.com/watch?v={video['id']}"
-        title = video['title']
-        urls.append(url)
-        titles.append(title)
+        if video['duration']: 
+            urls.append(video['link'])
+            titles.append(video['title'])
+            durations.append(video['accessibility']['duration'] )
 
-    return urls, titles
+    return urls, titles , durations 
 
 def download_audio(url):
   try:
     with youtube_dl.YoutubeDL() as ydl:
         info = ydl.extract_info(url, download=False)
-        formats = info['formats']
-        audio_formats = [f for f in formats if f.get('vcodec') == 'none']
-        download_url = audio_formats[-2].get('url')
-        extension = audio_formats[-2].get('ext')
-        video_title = info.get('title')
-        video_title_with_extension = f"{video_title}.{extension}"
-        return None , download_url , video_title_with_extension 
+        thumbnail = [i['url'] for i in info['thumbnails'] if i['url'].endswith('.jpg')][-1] 
+        download_url = [f.get('url') for f in info['formats'] if f.get('vcodec') == 'none'][-2]
+        return None , download_url , thumbnail
   except:
-    return 'Could not download file', None, None
+    return 'Could not download file', None , None
