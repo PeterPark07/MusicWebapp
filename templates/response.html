@@ -9,7 +9,7 @@
         <div class="response-container">
             <h1 class="response-title">{{ message }}</h1>
             <img class="response-image" src="{{ thumbnail }}" alt="Thumbnail">
-            <a href="{{ url_for('download_file', url=audio_url) }}" class="response-download">Download Now</a>
+            <a href="{{ url_for('download_file', url=file) }}" class="response-download">Download Now</a>
         </div>
     {% else %}
         <h1>{{ message }}</h1>
