@@ -7,8 +7,8 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         search_query = request.form.get('search_query')
-        urls, titles , durations = search(search_query, 10)
-        return render_template('index.html', urls=urls, titles=titles)
+        urls, titles , durations = search(search_query, 5)
+        return render_template('index.html', urls=urls, titles=titles, durations=durations)
 
     return render_template('index.html')
 
