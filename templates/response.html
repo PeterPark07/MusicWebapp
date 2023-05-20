@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-    {% if audio_url %}
+    {% if file %}
         <div class="response-container">
             <h1 class="response-title">{{ message }}</h1>
             <img class="response-image" src="{{ thumbnail }}" alt="Thumbnail">
