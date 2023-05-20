@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         search_query = request.form.get('search_query')
-        urls, titles = search(search_query, 10)
+        urls, titles , durations = search(search_query, 10)
         return render_template('index.html', urls=urls, titles=titles)
 
     return render_template('index.html')
@@ -15,7 +15,7 @@ def index():
 @app.route('/download', methods=['GET'])
 def download():
     url = request.args.get('url')
-    response, audio_url , name = download_audio(url)
+    response, audio_url , thumbnail = download_audio(url)
 
     if audio_url:
         return redirect(audio_url)
