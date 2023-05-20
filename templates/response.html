@@ -2,12 +2,15 @@
 <html>
 <head>
     <title>Response</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
     {% if audio_url %}
-        <h1>{{ message }}</h1>
-        <img src="{{ thumbnail }}" alt="Thumbnail">
-        <a href="{{ url_for('download_file', url=audio_url) }}"><button>Download Now</button></a>
+        <div class="response-container">
+            <h1 class="response-title">{{ message }}</h1>
+            <img class="response-image" src="{{ thumbnail }}" alt="Thumbnail">
+            <a href="{{ url_for('download_file', url=audio_url) }}" class="response-download">Download Now</a>
+        </div>
     {% else %}
         <h1>{{ message }}</h1>
     {% endif %}
