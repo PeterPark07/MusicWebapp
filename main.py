@@ -5,7 +5,7 @@ def search(query, n):
     search = VideosSearch(query, limit=n)  # Search with a limit of n results
     results = search.result().get('result')
     if not results:
-        return None, None
+        return None, None ,None
 
     urls = []
     titles = []
