@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         search_query = request.form.get('search_query')
-        urls, titles , durations = search(search_query, 5)
+        urls, titles, durations = search(search_query, 5)
         return render_template('index.html', urls=urls, titles=titles, durations=durations)
 
     return render_template('index.html')
@@ -15,13 +15,13 @@ def index():
 @app.route('/download', methods=['GET'])
 def download():
     url = request.args.get('url')
-    response, filepath , thumbnail = download_audio(url)
+    response, filepath, thumbnail = download_audio(url)
 
-    if thumbnail:
-        return render_template('response.html', file=filepath, thumbnail=thumbnail)
+    if filepath:
+        return render_template('response.html', message='File downloaded successfully', file=filepath, thumbnail=thumbnail)
     else:
         return render_template('response.html', message=response)
-   
+
 @app.route('/download_file', methods=['GET'])
 def download_file():
     file = request.args.get('file')
@@ -29,7 +29,7 @@ def download_file():
     if file:
         return send_file(file, as_attachment=True)
     else:
-        return render_template('response.html', message=response)
-    
+        return render_template('response.html', message='File not found')
+
 if __name__ == '__main__':
     app.run()
