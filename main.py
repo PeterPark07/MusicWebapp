@@ -1,6 +1,16 @@
 import yt_dlp as youtube_dl
 from youtubesearchpython import VideosSearch
 
+# YouTube DL options for audio extraction
+ytdl_opts = {
+    'format': 'bestaudio/best',
+    'postprocessors': [{
+        'key': 'FFmpegExtractAudio',
+        'preferredcodec': 'mp3',
+        'preferredquality': 'best'
+    }]
+}
+
 def search(query, n):
     search = VideosSearch(query, limit=n)  # Search with a limit of n results
     results = search.result().get('result')
@@ -18,12 +28,20 @@ def search(query, n):
 
     return urls, titles , durations 
 
-def download_audio(url):
+def show_audio(url):
   try:
     with youtube_dl.YoutubeDL() as ydl:
         info = ydl.extract_info(url, download=False)
         thumbnail = [i['url'] for i in info['thumbnails'] if i['url'].endswith('.jpg')][-1] 
-        download_url = [f.get('url') for f in info['formats'] if f.get('ext') == 'm4a'][-1]
-        return None , download_url , thumbnail
+        return None , thumbnail
   except:
-    return 'Could not download file', None , None
+    return 'Could not fetch file',  None
+
+def download_audio(url):
+  try:
+    with youtube_dl.YoutubeDL(ytdl_opts) as ydl:
+        info = ydl.extract_info(url, download=True)
+        filepath = info['requested_downloads'][0]['filepath']
+        return None , filepath
+  except:
+    return 'Could not download file', None
