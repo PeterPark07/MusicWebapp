@@ -68,6 +68,7 @@ h1 {
   align-items: center;
   font-family: sans-serif;
 }
+
 .download-btn,
 .youtube-link {
   font-size: 14px;
@@ -101,4 +102,35 @@ h1 {
 
 .track h3 {
   margin: 0;
+}
+
+.response-container {
+  text-align: center;
+}
+
+.response-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.response-image {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.response-download {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.response-download:hover {
+  background-color: #27ae60;
 }
