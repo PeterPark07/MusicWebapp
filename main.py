@@ -28,20 +28,12 @@ def search(query, n):
 
     return urls, titles , durations 
 
-def show_audio(url):
-  try:
-    with youtube_dl.YoutubeDL() as ydl:
-        info = ydl.extract_info(url, download=False)
-        thumbnail = [i['url'] for i in info['thumbnails'] if i['url'].endswith('.jpg')][-1] 
-        return None , thumbnail
-  except:
-    return 'Could not fetch file',  None
-
 def download_audio(url):
   try:
     with youtube_dl.YoutubeDL(ytdl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
+        thumbnail = [i['url'] for i in info['thumbnails'] if i['url'].endswith('.jpg')][-1] 
         filepath = info['requested_downloads'][0]['filepath']
-        return None , filepath
+        return None , filepath , thumbnail
   except:
-    return 'Could not download file', None
+    return 'Could not download file', None , None
